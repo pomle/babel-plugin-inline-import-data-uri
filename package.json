@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-inline-import-data-uri",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Babel plugin to make raw files importable as base64 encoded data URI strings.",
   "author": "Pontus Alexander <pontus.alexander@gmail.com>",
   "contributors": [
