@@ -57,8 +57,10 @@ describe('Babel Inline Import - Helper', () => {
       }).to.throw(Error);
     });
 
-    it('returns file content', () => {
-      expect(BabelInlineImportHelper.getContents('./fixtures/example.raw', __filename)).to.equal('a raw content\n');
+    it('returns file content as Buffer', () => {
+      const content = BabelInlineImportHelper.getContents('./fixtures/example.raw', __filename);
+      expect(content).to.be.instanceOf(Buffer);
+      expect(content.toString()).to.equal('a raw content\n');
     });
   });
 

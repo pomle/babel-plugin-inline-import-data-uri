@@ -24,9 +24,9 @@ export default function({ types: t }) {
                 }
 
                 const id = path.node.specifiers[0].local.name;
-                const content = BabelInlineImportHelper.getContents(givenPath, reference);
+                const buffer = BabelInlineImportHelper.getContents(givenPath, reference);
                 const mimeType = mime.lookup(givenPath) || 'application/octet-stream';
-                const dataURI = `data:${mimeType};base64,` + new Buffer(content).toString('base64');
+                const dataURI = `data:${mimeType};base64,` + buffer.toString('base64');
                 const variable = t.variableDeclarator(t.identifier(id), t.stringLiteral(dataURI));
 
                 path.replaceWith({
