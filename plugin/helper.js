@@ -11,9 +11,11 @@ export default class BabelInlineImportHelper {
   static root = global.rootPath || process.cwd();
 
   static shouldBeInlined(givenPath, extensions) {
-    const accept = (typeof extensions === 'string')
-      ? [extensions]
-      : (extensions || BabelInlineImportHelper.extensions);
+    const accept = (typeof extensions === "object" && extensions.length)?
+      extensions:
+      (typeof extensions === 'string')
+        ? [extensions]
+        : (extensions || BabelInlineImportHelper.extensions);
 
     for (const extension of accept) {
       if (givenPath.endsWith(extension)) {
